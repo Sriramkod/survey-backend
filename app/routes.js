@@ -5,6 +5,7 @@ const AuthenticationControllerPolicy = require('./policies/AuthenticationControl
 const albums = require("./controllers/album.controller.js");
 const songs = require("./controllers/song.controller.js");
 const questions  = require("./controllers/question.controller.js");
+const surveys  = require("./controllers/survey.controller.js");
 module.exports = (app) => {
 
     app.post('/register', 
@@ -20,8 +21,14 @@ module.exports = (app) => {
     )
     //Submit a new Question.....
     app.post('/surveyapi/question', questions.create)
-    //
+    // find question by survey id
     app.get("/surveyapi/question/survey/:id", questions.findAllBySurveyId)
+
+    //create new survey 
+    app.post('/surveyapi/survey', surveys.create)
+
+    // get survey by a survey manager email...
+    //coming soon....
 
   // Create a new album
   app.post("/album", albums.create);
