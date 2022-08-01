@@ -22,7 +22,7 @@ const db = require("./app/models");
 //});
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to Survey-Feed application." });
 });
 require("./app/routes/tutorial.routes")(app);
 require("./app/routes/lesson.routes")(app);

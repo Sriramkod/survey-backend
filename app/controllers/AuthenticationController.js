@@ -1,5 +1,5 @@
 const db = require("../models");
-const User = db.users;
+const User = db.surverymanager;
 const jwt = require('jsonwebtoken')
 const config = require('../config/db.config')
 module.exports = {
@@ -13,7 +13,7 @@ module.exports = {
        }
        catch(err){
            res.status(400).send({
-               error: 'Email already exists...'
+               error: 'Something went wrong...'
            })
            return
        }

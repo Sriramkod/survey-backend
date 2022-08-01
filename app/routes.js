@@ -10,7 +10,7 @@ const answers  = require("./controllers/answer.controller.js");
 
 module.exports = (app) => {
 
-    app.post('/register', 
+    app.post('/surveyapi/surveymanager/register', 
         AuthenticationControllerPolicy.register,
         AuthenticationController.register
     )
@@ -29,6 +29,12 @@ module.exports = (app) => {
     //create new survey 
     app.post('/surveyapi/survey', surveys.create)
 
+    //get All surveys for a manager...
+
+    app.get('/surveyapi/admin/survey',surveys.findAll)
+
+    app.get('/surveyapi/admin/managers',surveys.findAllSurveyManagers);
+    
     // get survey by a survey manager email...
     
     app.get('/surveyapi/survey/:surveymanager',surveys.findAllBySurveyManagers)

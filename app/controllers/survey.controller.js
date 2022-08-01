@@ -1,5 +1,6 @@
 const db = require("../models");
 const Survey = db.survey;
+const SurveyManager = db.surverymanager;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Survey
@@ -48,6 +49,24 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+//get All survey managers
+exports.findAllSurveyManagers = (req, res) => {
+  const email = req.query.email;
+  var condition = email ? { email: { [Op.like]: `%${email}%` } } : null;
+
+  SurveyManager.findAll({ where: condition })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while Survey managers."
+      });
+    });
+};
+
 //find By Survey Managers
 exports.findAllBySurveyManagers = (req, res) => {
   const surveymanager = req.params.surveymanager;
